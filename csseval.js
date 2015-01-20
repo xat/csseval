@@ -27,6 +27,9 @@
       },
       css: function($el, prop) {
         return $el.css(prop);
+      },
+      data: function($el, prop) {
+        return $el.data(prop);
       }
     }
   };
