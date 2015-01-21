@@ -4,8 +4,11 @@
   $.csseval = {
 
     triggers: {
-      scroll: function(run) {
-        $window.scroll(run);
+      scroll: function(run, $el) {
+        $window.on('scroll', run);
+        $el.one('csseval:destroy', function() {
+          $window.off('scroll', run);
+        });
       }
     },
 
@@ -36,10 +39,12 @@
 
   var Widget = function($el, scope) {
     var cssTemplate = $el.data('css');
-    var trigger = $el.data('trigger');
+    var triggers = $el.data('trigger');
     var localScope = {};
     var run;
     var fn;
+
+    triggers = triggers ? triggers.split(',') : [];
 
     // copy all scope methods to localScope and
     // bind $el as first argument
@@ -55,17 +60,29 @@
       $el.css(fn());
     };
 
-    if ($.csseval.triggers[trigger]) {
-      $.csseval.triggers[trigger](run);
-    }
+    $.each(triggers, function(k, trigger) {
+      trigger = $.trim(trigger);
+      if ($.csseval.triggers[trigger]) {
+        $.csseval.triggers[trigger](run, $el);
+      }
+    });
+
+    return {
+      destroy: function() {
+        $el.trigger('csseval:destroy');
+        $el.removeData('csseval');
+      },
+      run: run
+    };
   };
 
   $.fn.csseval = function() {
     return this.each(function(scope) {
       var $el = $(this);
+      var api;
       if ($el.data('csseval')) return;
-      Widget($el, $.extend({}, $.csseval.scope, scope || {}));
-      $el.data('csseval', true);
+      api = Widget($el, $.extend({}, $.csseval.scope, scope || {}));
+      $el.data('csseval', api);
     });
   };
 
