@@ -2,7 +2,6 @@
 
 use expressions to evaluate css on the fly.
 You can use this lib for parallax stuff, for example.
-This lib is not considered stable yet!
 
 ### Usage
 ```html
