@@ -64,7 +64,7 @@
     return this.each(function(scope) {
       var $el = $(this);
       if ($el.data('csseval')) return;
-      Widget($el, $.extend($.csseval.scope, scope || {}));
+      Widget($el, $.extend({}, $.csseval.scope, scope || {}));
       $el.data('csseval', true);
     });
   };
