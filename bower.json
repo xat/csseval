@@ -1,0 +1,22 @@
+{
+  "name": "csseval",
+  "version": "1.0.0",
+  "homepage": "https://github.com/xat/csseval",
+  "authors": [
+    "Simon Kusterer <simon@sope.io>"
+  ],
+  "description": "use expressions to evaluate css on the fly.",
+  "main": "csseval.js",
+  "keywords": [
+    "css",
+    "eval"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
