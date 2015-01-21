@@ -19,7 +19,7 @@ $(function() {
 
 <!-- ...later in your markup: -->
 
-<div class="parallax" data-trigger="scroll" data-css="{ 'margin-left': '`scrollTop() * 0.5`' }">
+<div class="parallax" data-trigger="scroll" data-css="{ 'margin-left': this.scrollTop() * 0.5 + 'px' }">
 Hello World!
 </div>
 
@@ -27,7 +27,7 @@ Hello World!
 the above code does this:
 each time a scroll event gets triggered data-css gets evaluated and the resulting css gets
 set to the element ( with $el.css(...) ).
-Notice how we used the expression `scrollTop() * 0.5` inside there.
+Notice how we used the expression 'scrollTop() * 0.5' inside there.
 -->
 ```
 
