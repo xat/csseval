@@ -5,8 +5,8 @@ You can use this lib for parallax stuff, for example.
 
 ### Usage
 ```html
-<script src="jquery.js">
-<script src="csseval.js">
+<script src="jquery.js"></script>
+<script src="csseval.js"></script>
 
 <!-- init -->
 
